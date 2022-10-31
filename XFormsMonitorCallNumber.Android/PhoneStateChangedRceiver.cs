@@ -8,10 +8,13 @@ using static Android.App.ActivityManager;
 namespace XFormsMonitorCallNumber.Droid
 {
     [BroadcastReceiver(Enabled = true, Exported = true)]
-    [IntentFilter(new[] { TelephonyManager.ActionPhoneStateChanged })]
+   // [IntentFilter(new[] { TelephonyManager.ActionPhoneStateChanged })]
+    [IntentFilter(new[] { TelephonyManager.ActionPhoneStateChanged }, Priority = (int)IntentFilterPriority.HighPriority)]
     internal class PhoneStateChangedRceiver: BroadcastReceiver
     {
         public object Int { get; private set; }
+
+        
         public override void OnReceive(Context context, Intent intent)
         {
 
@@ -20,7 +23,7 @@ namespace XFormsMonitorCallNumber.Droid
             string action = intent.Action;
 
             // MoveApllicationToFront();
-
+            DependencyService.Get<IMessage>().LongTime("You get the InCommingCallNumber is: "+intent.Action);
             if (TelephonyManager.ActionPhoneStateChanged.Equals(action))
             {
                 CallState state = mTelephonyManager.CallState;
