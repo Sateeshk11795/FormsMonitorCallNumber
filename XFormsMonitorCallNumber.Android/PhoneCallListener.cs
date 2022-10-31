@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace XFormsMonitorCallNumber.Droid
 {
@@ -26,6 +27,7 @@ namespace XFormsMonitorCallNumber.Droid
             {
                 if (state == TelephonyManager.ExtraStateOffhook)
                 {
+                    DependencyService.Get<IMessage>().LongTime("PhoneCallListener");
                     Task.Run(() =>
                     {
                         Task.Delay(5000).Wait();
