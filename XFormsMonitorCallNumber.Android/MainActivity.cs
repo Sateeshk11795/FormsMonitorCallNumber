@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.OS;
 using Android;
 using Android.Content;
+using Android.Telephony;
 
 [assembly: UsesPermission(Manifest.Permission.ReadCallLog)]
 [assembly: UsesPermission(Manifest.Permission.ReadPhoneNumbers)]
@@ -31,6 +32,10 @@ namespace XFormsMonitorCallNumber.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (requestCode == 123 && grantResults.Length > 0 && grantResults[0] == Permission.Granted)
+            {
+                RegisterReceiver(new PhoneStateChangedRceiver(), new IntentFilter(TelephonyManager.ActionPhoneStateChanged));
+            }
         }
 
     }
