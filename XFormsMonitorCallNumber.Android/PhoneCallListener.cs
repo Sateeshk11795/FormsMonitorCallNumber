@@ -27,7 +27,7 @@ namespace XFormsMonitorCallNumber.Droid
             {
                 if (state == TelephonyManager.ExtraStateOffhook)
                 {
-                    DependencyService.Get<IMessage>().LongTime("PhoneCallListener");
+                  //  DependencyService.Get<IMessage>().LongTime("PhoneCallListener");
                     Task.Run(() =>
                     {
                         Task.Delay(5000).Wait();

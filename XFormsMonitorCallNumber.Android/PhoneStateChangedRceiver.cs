@@ -23,8 +23,8 @@ namespace XFormsMonitorCallNumber.Droid
             string action = intent.Action;
 
             // MoveApllicationToFront();
-            DependencyService.Get<IMessage>().LongTime("You get the InCommingCallNumber is: "+intent.Action);
-            if (TelephonyManager.ActionPhoneStateChanged.Equals(action))
+           // DependencyService.Get<IMessage>().LongTime("You get the InCommingCallNumber is: "+intent.Action);
+            if (TelephonyManager.ActionPhoneStateChanged.Equals(intent.Action))
             {
                 CallState state = mTelephonyManager.CallState;
                 switch (state)
@@ -34,7 +34,8 @@ namespace XFormsMonitorCallNumber.Droid
 
 
                         var incomingPhoneNumber = intent.Extras.GetString(TelephonyManager.ExtraIncomingNumber);
-                        DependencyService.Get<IMessage>().LongTime("You get the InCommingCallNumber is");
+                        DependencyService.Get<IMessage>().LongTime("from IMessage: You get the InCommingCallNumber is: " + incomingPhoneNumber);
+                        MoveApllicationToFront();
                         //var incomingPhoneNumber = intent.GetStringExtra(TelephonyManager.ExtraIncomingNumber);
                         if (incomingPhoneNumber != null)
                         {
