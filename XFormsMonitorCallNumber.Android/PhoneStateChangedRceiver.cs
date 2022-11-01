@@ -35,7 +35,6 @@ namespace XFormsMonitorCallNumber.Droid
 
                         var incomingPhoneNumber = intent.Extras.GetString(TelephonyManager.ExtraIncomingNumber);
                         MoveApllicationToFront();
-                        //var incomingPhoneNumber = intent.GetStringExtra(TelephonyManager.ExtraIncomingNumber);
                         if (incomingPhoneNumber != null)
                         {
                             MoveApllicationToFront();
