@@ -31,10 +31,8 @@ namespace XFormsMonitorCallNumber.Droid
                 {
                     case CallState.Ringing:
 
-
-
                         var incomingPhoneNumber = intent.Extras.GetString(TelephonyManager.ExtraIncomingNumber);
-                        MoveApllicationToFront();
+                    
                         if (incomingPhoneNumber != null)
                         {
                             MoveApllicationToFront();
